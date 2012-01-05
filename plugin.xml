@@ -11,13 +11,6 @@ open source search server through the SolrJ library.
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>UrlMappings</resource>
-    <resource>org.grails.solr.Listing</resource>
-    <resource>org.grails.solr.Solr1</resource>
-    <resource>org.grails.solr.Solr1Annotated</resource>
-    <resource>org.grails.solr.Solr1Disabled</resource>
-    <resource>org.grails.solr.Solr1Override</resource>
-    <resource>org.grails.solr.Solr2</resource>
-    <resource>org.grails.solr.TESTENUM</resource>
     <resource>org.grails.solr.SolrService</resource>
     <resource>org.grails.solr.SolrTagLib</resource>
   </resources>
