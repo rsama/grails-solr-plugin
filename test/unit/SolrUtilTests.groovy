@@ -22,7 +22,6 @@
 */
 
 import grails.test.*
-import org.grails.solr.Solr1
 import org.grails.solr.SolrUtil
 
 class SolrUtilTests extends GrailsUnitTestCase {	
@@ -34,28 +33,5 @@ class SolrUtilTests extends GrailsUnitTestCase {
    protected void tearDown() {
        super.tearDown()
    }
-
-  void testSolrId() {	
-		def s = new Solr1(astring: "mystring", aint: 2, afloat: 1.2f, adate: new Date())
-		s.id = 25
-		def solrId = SolrUtil.getSolrId(s);
-		assertEquals(solrId, "org.grails.solr.Solr1-25")
-
-		def parsed = SolrUtil.parseSolrId(solrId)
-		assertEquals("org.grails.solr.Solr1", parsed.class)
-		assertEquals(25, parsed.id)
-		assertEquals(SolrUtil.parseSolrId(solrId).id, 25)
-  }
-
-	void testReinstantiateClass() {		
-		def s = new Solr1(astring: "mystring", aint: 2, afloat: 1.2f, adate: new Date(), id: 25)
-		def solrId = SolrUtil.getSolrId(s);		
-		def parsed = SolrUtil.parseSolrId(solrId)
-		
-		def theClass =  Thread.currentThread().contextClassLoader.loadClass("org.grails.solr.Solr1").newInstance()
-		theClass.id = 25
-		assertEquals(theClass.class.name, s.class.name)		
-	}
-	
 
 }

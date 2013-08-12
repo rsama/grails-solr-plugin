@@ -1,6 +1,6 @@
 dataSource {
   pooled = true
-  driverClassName = "org.hsqldb.jdbcDriver"
+  driverClassName = "org.h2.Driver"
   username = "sa"
   password = ""
 }
@@ -14,19 +14,30 @@ environments {
   development {
     dataSource {
       dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-      url = "jdbc:hsqldb:mem:devDB"
+      url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
     }
   }
   test {
     dataSource {
       dbCreate = "update"
-      url = "jdbc:hsqldb:mem:testDb"
+      url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
     }
   }
   production {
     dataSource {
-      dbCreate = "update"
-      url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+        dbCreate = "update"
+        url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+        pooled = true
+        properties {
+           maxActive = -1
+           minEvictableIdleTimeMillis=1800000
+           timeBetweenEvictionRunsMillis=1800000
+           numTestsPerEvictionRun=3
+           testOnBorrow=true
+           testWhileIdle=true
+           testOnReturn=true
+           validationQuery="SELECT 1"
+        }
     }
   }
 }
