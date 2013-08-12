@@ -22,6 +22,7 @@
 */
 
 import grails.test.*
+import org.grails.solr.Solr1
 import org.grails.solr.SolrService
 
 class SolrServiceTests extends GrailsUnitTestCase {
